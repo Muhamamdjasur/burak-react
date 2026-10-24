@@ -2,34 +2,24 @@
 import React from "react";
 import "../css/app.css";
 import { Box, Button, Container, Stack, Typography } from "@mui/material";
-import { BrowserRouter as Router, Switch, Link } from "react-router-dom";
-import { RippleBadge } from "./MaterialTheme/styled";
+import { BrowserRouter as Router, Switch, Link, useLocation } from "react-router-dom";
 import { Route } from "react-router-dom";
 import { HomePage } from "./screens/homePage";
 import { OrdersPage } from "./screens/ordersPage";
 import { ProductsPage } from "./screens/productPage";
 import { UserPage } from "./screens/userPage";
+import { HomeNavbar } from "./components/headers/HomeNavbar";
+import { OtherNavbar } from "./components/headers/OtherNavbar";
+import { Footer } from "./components/footer";
 
 function App() {
+  const location = useLocation();
+  console.log("location:", location);
+    
+     
 return (
-      <div>
-        <nav>
-          <ul>
-            <li>
-                   <li>
-              <Link to="/">HomePage</Link>
-            </li>
-              <Link to="/products">ProductsPage</Link>
-            </li>
-            <li>
-              <Link to="/orders">OrdersPage</Link>
-            </li>
-            <li>
-              <Link to="/member-page">UserPage</Link>
-            </li>
-          </ul>
-        </nav>
-
+      <>
+        {location.pathname === "/" ? <HomeNavbar /> : <OtherNavbar />}
         <Switch>
           <Route path="/products">
             < ProductsPage/>
@@ -44,7 +34,8 @@ return (
             <HomePage />
           </Route>
         </Switch>
-      </div>
+        <Footer />
+        </>
   );
 }
 
