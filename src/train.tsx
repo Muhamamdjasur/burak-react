@@ -5,3 +5,6 @@ function findIntersection(arr1: number[], arr2: number[]): number[] {
 }
 
 console.log(findIntersection([1, 2, 3], [3, 2, 0]));
+
+
+export {};
