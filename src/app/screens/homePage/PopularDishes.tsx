@@ -1,119 +1,98 @@
 import React from "react";
 import { Box, Container, Stack } from "@mui/material";
-import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
+import Card from "@mui/joy/Card";
+import CardCover from "@mui/joy/CardCover";
+import CardContent from "@mui/joy/CardContent";
+import Typography from "@mui/joy/Typography";
+import { CssVarsProvider } from "@mui/joy/styles";
+import CardOverflow from "@mui/joy/CardOverflow";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
+import DescriptionOutlined from "@mui/icons-material/DescriptionOutlined";
 
-const list = [
-  { productName: "Lavash", imagePath: "/img/lavash.webp" },
-  { productName: "Cutlet", imagePath: "/img/cutlet.webp" },
-  { productName: "Kebab", imagePath: "/img/kebab.webp" },
-  { productName: "Kebab", imagePath: "/img/kebab-fresh.webp" },
-];
-
+import {  useSelector } from "react-redux";
+import { createSelector } from "reselect";
+import { retrivePopularDishes} from "./selector";
+import { Product } from "../../../lib/types/product";
+import { serverApi } from "../../../lib/config";
+/**  REDUX SLICE &  SELECTOR **/
+const popularDishesRetriever = createSelector(
+  retrivePopularDishes, 
+  (popularDishes) => ({ popularDishes})
+);
 export default function PopularDishes() {
+   const { popularDishes } = useSelector(popularDishesRetriever)
+
+    //console.log("popularDishes", popularDishes)
   return (
     <div className="popular-dishes-frame">
       <Container>
         <Stack className="popular-section">
-          <Box className="category-title">Popular Dishes</Box>
+          <Box className="category_title">Popular Dishes</Box>
+
           <Stack className="cards-frame">
-            {list.length !== 0 ? (
-              list.map((ele) => {
+            {popularDishes.length !== 0 ? (
+              popularDishes.map((product: Product) => {
+                const imagePath = `${serverApi}/${product.productImages[0]}`;
                 return (
-                  <Card
-                    key={ele.imagePath}
-                    className={"card"}
-                    sx={{
-                      position: "relative",
-                      overflow: "hidden",
-                      display: "flex",
-                      flexDirection: "column",
-                      borderRadius: "12px",
-                    }}
-                  >
-                    <CardMedia
-                      component="img"
-                      image={ele.imagePath}
-                      alt=""
-                      sx={{
-                        position: "absolute",
-                        inset: 0,
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                      }}
-                    />
-                    <Box
-                      className={"card-cover"}
-                      sx={{ position: "absolute", inset: 0 }}
-                    />
-                    <Box
-                      sx={{
-                        position: "relative",
-                        zIndex: 1,
-                        flexGrow: 1,
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "flex-end",
-                        p: 2,
-                      }}
-                    >
-                      <Stack
-                        direction="row"
-                        sx={{ justifyContent: "space-between" }}
+                  <CssVarsProvider key={product._id}>
+                    <Card className="card">
+                      <CardCover>
+                        <img src={imagePath} alt="" />
+                      </CardCover>
+                    <CardCover className="card-cover" />
+                    <CardContent sx={{ justifyContent: "flex-end" }}>
+                        <Stack
+                          flexDirection={"row"}
+                          justifyContent={"space-between"}
+                        >
+                          <Typography
+                            level="h2"
+                            fontSize={"lg"}
+                            textColor={"#fff"}
+                            mb={1}
+                          >
+                            {product.productName}
+                          </Typography>
+
+                          <Typography
+                            sx={{
+                              fontWeight: "md",
+                              color: "neutral.300",
+                              alignItems: "center",
+                              display: "flex",
+                            }}
+                          >
+                            {product.productViews}
+                            <VisibilityIcon
+                              sx={{ fontSize: 25, marginLeft: "5px" }}
+                            />
+                          </Typography>
+                        </Stack>
+                      </CardContent>
+
+                      <CardOverflow
+                        sx={{
+                          display: "flex",
+                          gap: 1.5,
+                          py: 1.5,
+                          px: "var(--Card-padding)",
+                          borderTop: "1px solid",
+                          height: "60px",
+                        }}
                       >
                         <Typography
-                          sx={{
-                            color: "#fff",
-                            fontSize: "1.25rem",
-                            fontWeight: 700,
-                            mb: 1,
-                          }}
+                          startDecorator={<DescriptionOutlined />}
+                          textColor="neutral.300"
                         >
-                          {ele.productName}
+                          {product.productDesc}
                         </Typography>
-                        <Typography
-                          component="div"
-                          sx={{
-                            color: "#cdd7e1",
-                            fontWeight: 500,
-                            alignItems: "center",
-                            display: "flex",
-                          }}
-                        >
-                          20
-                          <VisibilityIcon
-                            sx={{ fontSize: 25, marginLeft: "5px" }}
-                          />
-                        </Typography>
-                      </Stack>
-                    </Box>
-                    <Box
-                      sx={{
-                        position: "relative",
-                        zIndex: 1,
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 1.5,
-                        px: 2,
-                        height: "60px",
-                        borderTop: "1px solid rgba(255, 255, 255, 0.3)",
-                        color: "#cdd7e1",
-                      }}
-                    >
-                      <DescriptionOutlinedIcon />
-                      <Typography sx={{ color: "#cdd7e1" }}>
-                        This is delicious meal
-                      </Typography>
-                    </Box>
-                  </Card>
+                      </CardOverflow>
+                    </Card>
+                  </CssVarsProvider>
                 );
               })
             ) : (
-              <Box className="no-data">Popular dishes are not available!</Box>
+              <Box className="no-data">New products are not available!</Box>
             )}
           </Stack>
         </Stack>
