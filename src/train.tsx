@@ -21,5 +21,5 @@ console.log(sumEvens([1, 2, 3])); // 2
 
 // console.log(findIntersection([1, 2, 3], [3, 2, 0]));
 
-
+ 
 export {};
