@@ -44,7 +44,28 @@ export default function HomeNavbar(props: HomeNavbarProps) {
     handleLogoutRequest,
   } = props;
   const { authMember } = useGlobals();
+
+  /** HOOKS **/
+  const [hours, setHours] = useState<number>(0); // boshlang'ich qiymat 0
+
+  // componentDidMount + componentWillUnmount
+  useEffect(() => {
+    console.log("componentDidMount"); // backenddan data olish shu yerda
+    return () => {
+      console.log("componentWillUnmount");
+    };
+  }, []);
+
+  // componentDidUpdate (faqat hours o'zgarganda ishlaydi)
+  useEffect(() => {
+    console.log("hours o'zgardi:", hours);
+  }, [hours]);
+
   /** HANDLER **/
+  const handleSignupClick = () => {
+    setHours((prev) => prev + 1); // har bosilganda +1
+    setSignupOpen(true); // eski funksiya ham ishlaydi
+  };
 
   //bizning oxirgi mantigimiz ts dan  js ga ozgaradi!!
   return (
@@ -167,13 +188,13 @@ export default function HomeNavbar(props: HomeNavbarProps) {
             </Box>{" "}
             {/*oxirgi induvudial bogin shuning uchun box(Stack emas) */}
             <Box className={"wel-txt"}> The Choice , not just a choice </Box>
-            <Box className={"service-txt"}> 24 hours service</Box>
+            <Box className={"service-txt"}> {hours} hours service</Box>
             <Box className={"signup"}>
               {!authMember ? (
                 <Button
                   variant={"contained"}
                   className={"signup-button"}
-                  onClick={() => setSignupOpen(true)}
+                  onClick={handleSignupClick}
                 >
                   {" "}
                   SIGN UP{" "}
