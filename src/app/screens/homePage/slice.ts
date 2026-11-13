@@ -14,9 +14,9 @@ const homePageSlice = createSlice({
     name: "homePage",
     initialState,
     reducers: {
-        setPopularDishes: (state, action ) => { // 1 Actiondan kelayotgan malumo
-            state.popularDishes = action.payload;//2 Ichidan payload qismidan malumot olayabdi 
-            // //va  popularDishes qiymatini yangilab berayabdi
+        setPopularDishes: (state, action ) => {  // 1 Actiondan kelayotgan malumot
+            state.popularDishes = action.payload; //2 Ichidan payload qismidan malumot olayabdi 
+            // va  popularDishes qiymatini yangilab berayabdi
         },
         setNewDishes: (state, action ) => {//
             state.newDishes = action.payload;
@@ -32,10 +32,10 @@ const homePageSlice = createSlice({
 export const  { setPopularDishes, setNewDishes, setTopUsers  } =  // bu yerda 3 ta action va ularni destruction qilayabmiz  
 homePageSlice.actions;
 
-const HomePageReducer = homePageSlice.reducer;// 1 Buni homePageSlice ichidan reducer ovolib
-export default HomePageReducer;// buni tashqariga export qilib olayabmiz 
+const HomePageReducer = homePageSlice.reducer; // 1 Buni homePageSlice ichidan reducer ovolib
+export default HomePageReducer; // buni tashqariga export qilib olayabmiz 
 
 
 
 // Redux Reducer 
-//Redux Action.  ikkisi ham bitta nomda lekin boshqa boshqa narsa import { createSlice } from "@reduxjs/toolkit";
+// Redux Action.  ikkisi ham bitta nomda lekin boshqa boshqa narsa import { createSlice } from "@reduxjs/toolkit";
