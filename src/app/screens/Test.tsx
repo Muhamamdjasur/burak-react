@@ -3,7 +3,7 @@ import React, { Component } from "react";
 
 class Test extends Component {
   constructor(props) {
-    super(props);
+    super(props); 
     this.state = {
       brand: "Ford",
       model: "Mustang",

@@ -5,7 +5,7 @@ import NewDishes from "./NewDishes";
 import Advertisement from "./Advertisement";
 import ActiveUsers from "./ActiveUser";
 import Events from "./Events";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
 import { setNewDishes, setPopularDishes, setTopUsers } from "./slice";
 import { Product } from "../../../lib/types/product";
@@ -17,7 +17,7 @@ import { Member } from "../../../lib/types/member";
 import { ProductCollection } from "../../../lib/enums/product.enum";
 import "../../../css/home.css";
 
-// REDUX ACTIONS
+// REDUX SLICE & SELCTOR
 const actionDispatch = (dispatch: Dispatch) => ({
   setPopularDishes: (data: Product[]) => dispatch(setPopularDishes(data)),
   setNewDishes: (data: Product[]) => dispatch(setNewDishes(data)),
@@ -29,7 +29,7 @@ export default function HomePage() {
     actionDispatch(useDispatch());
 
   useEffect(() => { //life sycle hosil qilish un  yani 3 hil 
-    const product = new ProductService();//ins obj
+    const product = new ProductService();  // ins obj
 
     // POPULAR DISHES
     product //obj 

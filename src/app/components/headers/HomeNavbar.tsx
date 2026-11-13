@@ -25,8 +25,8 @@ interface HomeNavbarProps {
   setLoginOpen: (isOpen: boolean) => void;
   handleLogoutClick: (e: React.MouseEvent<HTMLElement>) => void;
   anchorEl: HTMLElement | null;
-  handleCloseLogout: () => void;
-  handleLogoutRequest: () => void;
+  handleCloseLogout: () => void; 
+  handleLogoutRequest: () => void; 
 }
 
 export default function HomeNavbar(props: HomeNavbarProps) {
@@ -37,7 +37,7 @@ export default function HomeNavbar(props: HomeNavbarProps) {
     onDelete,
     onDeleteAll,
     setSignupOpen,
-    setLoginOpen,
+    setLoginOpen, 
     handleLogoutClick,
     anchorEl,
     handleCloseLogout,
@@ -56,7 +56,7 @@ export default function HomeNavbar(props: HomeNavbarProps) {
     };
   }, []);
 
-  // componentDidUpdate (faqat hours o'zgarganda ishlaydi)
+  // componentDidUpdate (faqat hours o'zgarganda ishlaydi) 
   useEffect(() => {
     console.log("hours o'zgardi:", hours);
   }, [hours]);

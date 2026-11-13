@@ -15,7 +15,7 @@ export interface Member {
   updatedAt: Date;
 }
 
-export interface MemberInput {
+export interface MemberInput { 
   memberType?: MemberType;
   memberStatus?: MemberStatus;
   memberNick: string;

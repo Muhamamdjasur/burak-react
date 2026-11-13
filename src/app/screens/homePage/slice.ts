@@ -7,7 +7,7 @@ import { HomePageState } from "../../../lib/types/screen";
     newDishes: [],
     topUsers: [],
  };
-
+ 
 
 //Reducer vazifasi Actiondan kelayotgan malumotlarni => Storega joylash 
 const homePageSlice = createSlice({
