@@ -44,6 +44,8 @@ export default function HomePage() {
       })
       .catch((err) => console.log(err));
 
+      console.log(process.env.REACT_APP_API_URL);
+
     // NEW DISHES
     product
       .getProducts({
