@@ -4,7 +4,7 @@ import { HomePageState } from "../../../lib/types/screen";
 
  const initialState: HomePageState = {
     popularDishes: [],
-    newDishes: [],
+    newDishes: [], 
     topUsers: [],
  };
  

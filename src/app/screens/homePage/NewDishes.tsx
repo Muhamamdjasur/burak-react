@@ -15,6 +15,8 @@ import { retriveNewDishes} from "./selector";
 import { Product } from "../../../lib/types/product";
 import { serverApi } from "../../../lib/config";
 import { ProductCollection, ProductSize } from "../../../lib/enums/product.enum";
+
+
 /**  REDUX SLICE &  SELECTOR **/
 const newDishesRetriever = createSelector(
   retriveNewDishes,
@@ -62,7 +64,7 @@ export default function NewDishes() {
                           <Typography className={"price"}>
                             ${product.productPrice}</Typography>
                         </Stack>
-
+                        
                         <Stack>
                           <Typography className={"views"}>
                                {product.productViews}

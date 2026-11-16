@@ -36,7 +36,7 @@ class ProductService {
     } catch (err) {
       console.log("Error, getTopUs  ers :", err);
       throw err;
-    }
+    } 
   }
 }
 export default ProductService;
