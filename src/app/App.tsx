@@ -87,7 +87,7 @@ function App() {
         <Route path="/products">
           <ProductsPage onAdd={onAdd} />
         </Route>
-        <Route path="/orders">
+        <Route path="/orders"> 
           <OrdersPage />
         </Route>
         <Route path="/member-page">

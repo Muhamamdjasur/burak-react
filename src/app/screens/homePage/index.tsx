@@ -28,11 +28,11 @@ export default function HomePage() {
   const { setPopularDishes, setNewDishes, setTopUsers } =
     actionDispatch(useDispatch());
 
-  useEffect(() => { //life sycle hosil qilish un  yani 3 hil 
+  useEffect(() => { //life sycle hosil qilish un  yani 3 hil  
     const product = new ProductService();  // ins obj
 
     // POPULAR DISHES
-    product //obj 
+    product // obj 
       .getProducts({ //key va val meth  1
         page: 1 ,
         limit: 4,

@@ -146,7 +146,7 @@
 //               onClick={() => searchOrderHandler("productViews")} 
 //               >
 //                 Views
-//               </Button>
+//               </Button> 
 //             </Stack>
 //           </Stack>
 //           <Stack className={"list-category-section"} spacing={2}>
@@ -654,7 +654,7 @@ export default function Products(props: ProductsProps){
                         <img src={"/img/seafood.webp"} />
                     </Box>
                     <Box className={"review-box"}>
-                        <img src={"/img/sweets.webp"} />
+                        <img src={"/img/sweets.webp"} /> 
                     </Box>
                     <Box className={"review-box"}>
                         <img src={"/img/doner.webp"} />
