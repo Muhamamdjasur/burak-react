@@ -30,7 +30,7 @@ export default function ActiveUsers() {
         <Stack className="main">
           <Box className="category-title">Active Users</Box>
 
-          <Stack className="cards-frame" direction="row">
+          <Stack className="cards-frame" direction="row"> 
             <CssVarsProvider>
               {topUsers?.length === 0 ? (
                 <Box className="no-data">No Active Users!</Box>

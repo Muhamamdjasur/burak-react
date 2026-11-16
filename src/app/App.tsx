@@ -79,7 +79,7 @@ function App() {
           anchorEl={anchorEl}
           handleLogoutClick={handleLogoutClick}
           handleCloseLogout={handleCloseLogout}
-          handleLogoutRequest={handleLogoutRequest}
+          handleLogoutRequest={handleLogoutRequest} 
         />
       )}
 

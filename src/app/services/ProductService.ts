@@ -35,7 +35,7 @@ class ProductService {
       return result.data;
     } catch (err) {
       console.log("Error, getTopUs  ers :", err);
-      throw err;
+      throw err; 
     } 
   }
 }

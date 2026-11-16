@@ -76,7 +76,7 @@ export default function HomePage() {
       <Advertisement />
       <ActiveUsers />
       <Events />
-    </div>
+    </div> 
   );
 }
 

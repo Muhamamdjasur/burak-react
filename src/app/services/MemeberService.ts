@@ -108,7 +108,7 @@ class MemberService {
     } catch (err) {
       console.log("error, updateMember:", err);
       throw err;
-    }
+    } 
   }
 }
 

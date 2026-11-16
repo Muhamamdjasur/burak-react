@@ -35,7 +35,7 @@ export default function NewDishes() {
         <Stack className="main">
           <Box className="category-title">Fresh Menu</Box>
           <Stack className="cards-frame">
-            <CssVarsProvider>
+            <CssVarsProvider> 
              {newDishes.length !== 0 ? (
                newDishes.map((product: Product) => {
                    const imagePath = `${serverApi}/${product.productImages[0]}`;
@@ -64,7 +64,7 @@ export default function NewDishes() {
                           <Typography className={"price"}>
                             ${product.productPrice}</Typography>
                         </Stack>
-                        
+
                         <Stack>
                           <Typography className={"views"}>
                                {product.productViews}
