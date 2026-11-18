@@ -25,18 +25,18 @@ class ProductService {
     }
   }
 
-  public async getProduct(productId: string): Promise<Product> {
+  public async getProduct(productId: string): Promise<Product> {             
     try {
-      const url = `${this.path}/product/${productId}`;
-      const result = await axios.get(url, { withCredentials: true });
+      const url = `${this.path}/product/${productId}`;              
+      const result = await axios.get(url, { withCredentials: true });   
 
-      console.log("getProduct:", result);
+      console.log("getProduct:", result); 
 
-      return result.data;
-    } catch (err) {
-      console.log("Error, getTopUs  ers :", err);
-      throw err; 
-    } 
+      return result.data; 
+    } catch (err) { 
+      console.log("Error, getTopUs  ers :", err); 
+      throw err;                         
+    }  
   }
 }
-export default ProductService;
+export default ProductService;                         

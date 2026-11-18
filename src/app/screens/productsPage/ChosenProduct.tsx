@@ -26,29 +26,29 @@ import { CartItem } from "../../../lib/types/search";
 // REDUX ACTIONS
 
 const actionDispatch = (dispatch: Dispatch) => ({
-  setRestaurant: (data: Member) => dispatch(setRestaurant(data)),
-  setChosenProduct: (data: Product) => dispatch(setChosenProduct(data)),
+  setRestaurant: (data: Member) => dispatch(setRestaurant(data)), 
+  setChosenProduct: (data: Product) => dispatch(setChosenProduct(data)), 
 });
- const chosenProductRetriever = createSelector( 
-  retrieveChosenProduct, 
-   (chosenProduct) => ({ 
-  chosenProduct,
-})); 
- const restaurantRetriever = createSelector(   
-  retrieveRestaurant,  
+ const chosenProductRetriever = createSelector(  
+  retrieveChosenProduct,  
+   (chosenProduct) => ({  
+  chosenProduct, 
+}));  
+ const restaurantRetriever = createSelector(     
+  retrieveRestaurant,   
   (restaurant) => ({  
   restaurant,
 }));  
+  
 
-
-interface ChosenProductProps { 
-    onAdd: (item: CartItem) => void; 
+interface ChosenProductProps {  
+    onAdd: (item: CartItem) => void;  
 }
 
-export default function ChosenProduct(props: ChosenProductProps ) {
+export default function ChosenProduct(props: ChosenProductProps ) { 
   const { onAdd } = props;
-  const {productId} = useParams<{productId: string }>();
-  const {setRestaurant, setChosenProduct} = actionDispatch(useDispatch());
+  const {productId} = useParams<{productId: string }>(); 
+  const {setRestaurant, setChosenProduct} = actionDispatch(useDispatch()); 
   const {chosenProduct} = useSelector (chosenProductRetriever);
   const {restaurant} = useSelector (restaurantRetriever);
    
@@ -76,12 +76,12 @@ if(!chosenProduct) return null;
         <Stack className={"chosen-product-slider"}>
           <Swiper
             loop={true}
-            spaceBetween={10}
+            spaceBetween={10}      
             navigation={true}
-            modules={[FreeMode, Navigation, Thumbs]}
+            modules={[FreeMode, Navigation, Thumbs]}                                            
             className="swiper-area"
           >
-            {chosenProduct?.productImages.map((ele: string, index: number) => {
+            {chosenProduct?.productImages.map((ele: string, index: number) => {      
               const imagePath =  `${serverApi}/${ele}`;
                 return (
                   <SwiperSlide key={index}>
