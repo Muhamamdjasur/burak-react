@@ -359,37 +359,37 @@ const productsRetriever = createSelector(
   (products) => ({products})  
 );
 
-interface ProductsProps {
-  onAdd: (item: CartItem) => void; 
+interface ProductsProps { 
+  onAdd: (item: CartItem) => void;  
 }
 
-export default function Products(props: ProductsProps){
-    const { onAdd } = props;
-    const {setProducts} = actionDispatch(useDispatch());
-    const {products} = useSelector(productsRetriever);
-    const [productSearch, setProductSearch] = useState<ProductInquiry>({
+export default function Products(props: ProductsProps){ 
+    const { onAdd } = props; 
+    const {setProducts} = actionDispatch(useDispatch()); 
+    const {products} = useSelector(productsRetriever); 
+    const [productSearch, setProductSearch] = useState<ProductInquiry>({ 
             page: 1,
             limit: 8,
-            order: "createdAt",
-            productCollection: ProductCollection.DISH, 
+            order: "createdAt", 
+            productCollection: ProductCollection.DISH,  
             search: ""
         });
-
-    const [searchText, setSearchText] = useState<string>("");
-    const history = useHistory();
-
+ 
+    const [searchText, setSearchText] = useState<string>("");  
+    const history = useHistory(); 
+  
     useEffect(() => {
-        const product = new ProductService();
+        const product = new ProductService(); 
         product
             .getProducts(productSearch)
-            .then((data) => setProducts(data))
-            .catch(err => console.log(err));
+            .then((data) => setProducts(data))  
+            .catch(err => console.log(err)); 
     }, [productSearch]);
-
-    useEffect(() => {
-        if(searchText === "") {
-            productSearch.search = "";
-            setProductSearch({...productSearch});
+ 
+    useEffect(() => { 
+        if(searchText === "") { 
+            productSearch.search = ""; 
+            setProductSearch({...productSearch}); 
         }
 
     }, [searchText]);
@@ -501,28 +501,28 @@ export default function Products(props: ProductsProps){
                     <Stack className={"product-category"}>
                         <div className={"category-main"}>
                             <Button 
-                                variant={"contained"} 
-                                color={
-                                    productSearch.productCollection === ProductCollection.OTHER 
-                                    ? "primary" 
-                                    : "secondary"
+                                variant={"contained"}   
+                                color={  
+                                    productSearch.productCollection === ProductCollection.OTHER  
+                                    ? "primary"  
+                                    : "secondary"  
                                 } 
-                                onClick={() => searchCollectionHandler(ProductCollection.OTHER)}
+                                onClick={() => searchCollectionHandler(ProductCollection.OTHER)} 
                             >
-                                Other
-                            </Button>
-                            <Button 
-                                variant={"contained"} 
+                                Other  
+                            </Button>   
+                            <Button    
+                                variant={"contained"}   
                                 color={
-                                    productSearch.productCollection === ProductCollection.DESERT 
-                                    ? "primary" 
+                                    productSearch.productCollection === ProductCollection.DESERT  
+                                    ? "primary"  
                                     : "secondary"
                                 }
-                                onClick={() => searchCollectionHandler(ProductCollection.DESERT)}
+                                onClick={() => searchCollectionHandler(ProductCollection.DESERT)} 
                             >
-                                Dessert
-                            </Button>
-                            <Button 
+                                Dessert 
+                            </Button> 
+                            <Button   
                                 variant={"contained"} 
                                 color={
                                     productSearch.productCollection === ProductCollection.DRINK 
@@ -614,8 +614,8 @@ export default function Products(props: ProductsProps){
                                     </Stack>
                                 );
                             })
-                        ) : (
-                            <Box className={"no-data"}>Products are not available!</Box>
+                        ) : ( 
+                            <Box className={"no-data"}>Products are not available!</Box> 
                         )}
                     </Stack>
                 </Stack>
@@ -628,15 +628,15 @@ export default function Products(props: ProductsProps){
                         : productSearch.page
                     }
                     page={productSearch.page}
-                    renderItem={(item) => (
+                    renderItem={(item) => ( 
                         <PaginationItem
                         components={{
                             previous: ArrowBackIcon,
                             next: ArrowForwardIcon,
                         }}
-                        {...item}
+                        {...item} 
                         color={"secondary"}
-                        />
+                        /> 
                     )}
                     onChange={paginationHandler}
                     />
