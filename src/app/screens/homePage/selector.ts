@@ -17,7 +17,7 @@ export const retrivePopularDishes = createSelector(
 export const retriveNewDishes = createSelector( 
     selectHomePage,
     (HomePage) =>  HomePage.newDishes
-);// stateni qolga olib  ichidan homepageni ajratib oldi  
+); // stateni qolga olib  ichidan homepageni ajratib oldi  
 export const retriveTopUsers = createSelector(//select 
     selectHomePage,
     (HomePage) =>  HomePage.topUsers//reselect 

@@ -22,7 +22,9 @@ import MemberService from "../../services/MemeberService";
 import { Member } from "../../../lib/types/member";
 import { serverApi } from "../../../lib/config";
 import { CartItem } from "../../../lib/types/search";
+
 // REDUX ACTIONS
+
 const actionDispatch = (dispatch: Dispatch) => ({
   setRestaurant: (data: Member) => dispatch(setRestaurant(data)),
   setChosenProduct: (data: Product) => dispatch(setChosenProduct(data)),
@@ -32,15 +34,15 @@ const actionDispatch = (dispatch: Dispatch) => ({
    (chosenProduct) => ({ 
   chosenProduct,
 })); 
- const restaurantRetriever = createSelector(  
+ const restaurantRetriever = createSelector(   
   retrieveRestaurant,  
-  (restaurant) => ({ 
+  (restaurant) => ({  
   restaurant,
-}));
+}));  
 
 
-interface ChosenProductProps {
-    onAdd: (item: CartItem) => void;
+interface ChosenProductProps { 
+    onAdd: (item: CartItem) => void; 
 }
 
 export default function ChosenProduct(props: ChosenProductProps ) {

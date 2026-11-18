@@ -9,21 +9,21 @@ import { HomePageState } from "../../../lib/types/screen";
  };
  
 
-//Reducer vazifasi Actiondan kelayotgan malumotlarni => Storega joylash 
+// Reducer vazifasi Actiondan kelayotgan malumotlarni => Storega joylash 
 const homePageSlice = createSlice({
     name: "homePage",
     initialState,
     reducers: {
-        setPopularDishes: (state, action ) => {  // 1 Actiondan kelayotgan malumot
-            state.popularDishes = action.payload; //2 Ichidan payload qismidan malumot olayabdi 
+        setPopularDishes: (state, action ) => {  // 1 Actiondan kelayotgan malumot 
+            state.popularDishes = action.payload; // 2 Ichidan payload qismidan malumot olayabdi 
             // va  popularDishes qiymatini yangilab berayabdi
         },
-        setNewDishes: (state, action ) => {//
+        setNewDishes: (state, action ) => {//  s
             state.newDishes = action.payload;
-        },
-        setTopUsers: (state, action ) => {// 1 setTopUsers Reducer ishga tushsa, 
+        }, 
+        setTopUsers: (state, action ) => {// 1 setTopUsers Re ducer ishga tushsa, 
             state.topUsers = action.payload;
-// 2 action.payloaddan kelayotgan malumotni olib , state.=imizni topUsersni yangilab berar ekan!! 
+//  2 action.payloaddan kelayotgan malumotni olib , state.=imizni topUsersni yangilab berar ekan!! 
 //  3 yani boshlangic qiymatlar ozgaradi(tepadagi 3 ta malumot  )
         },
     },

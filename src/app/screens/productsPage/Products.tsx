@@ -349,17 +349,18 @@ import { useHistory } from "react-router-dom";
 import { CartItem } from "../../../lib/types/search";
 
 // REDUX SLICE & SELECTOR
-const actionDispatch = (dispatch: Dispatch) => ({
-  setProducts: (data: Product[]) => dispatch(setProducts(data))
+
+const actionDispatch = (dispatch: Dispatch) => ({ 
+  setProducts: (data: Product[]) => dispatch(setProducts(data)) 
 });
 
-const productsRetriever = createSelector(
-  retrieveProducts, 
-  (products) => ({products})
+const productsRetriever = createSelector( 
+  retrieveProducts,  
+  (products) => ({products})  
 );
 
 interface ProductsProps {
-  onAdd: (item: CartItem) => void;
+  onAdd: (item: CartItem) => void; 
 }
 
 export default function Products(props: ProductsProps){
@@ -370,7 +371,7 @@ export default function Products(props: ProductsProps){
             page: 1,
             limit: 8,
             order: "createdAt",
-            productCollection: ProductCollection.DISH,
+            productCollection: ProductCollection.DISH, 
             search: ""
         });
 
@@ -405,20 +406,20 @@ export default function Products(props: ProductsProps){
     const searchOrderHandler = (order: string) => {        
         productSearch.page = 1;
         productSearch.order = order;
-        setProductSearch({...productSearch});
+        setProductSearch({...productSearch}); 
     };
 
     const searchProductHandler = () => {
-        productSearch.search = searchText;
-        setProductSearch({...productSearch});
+        productSearch.search = searchText; 
+        setProductSearch({...productSearch}); 
     }
 
-    const paginationHandler = (e: ChangeEvent<any>, value: number) => {
+    const paginationHandler = (e: ChangeEvent<any>, value: number) => { 
         productSearch.page = value;
         setProductSearch({...productSearch});
     }
 
-    const chooseDishHandler = (id: string) => {
+    const chooseDishHandler = (id: string) => { 
         history.push(`/products/${id}`);     
     }
 

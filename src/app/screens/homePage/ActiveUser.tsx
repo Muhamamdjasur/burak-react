@@ -1,7 +1,3 @@
-
-
-
-// //  
 import React from "react";
 import Card from "@mui/joy/Card";
 import { CssVarsProvider, Typography } from "@mui/joy";
@@ -60,5 +56,5 @@ export default function ActiveUsers() {
         </Stack>
       </Container>
     </div>
-  );
+  )
 }

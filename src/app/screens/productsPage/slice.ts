@@ -40,31 +40,31 @@
 // //Redux Action.  ikkisi ham bitta nomda lekin boshqa boshqa narsa 
 
 import { createSlice } from "@reduxjs/toolkit";
-import { ProductsPage } from "../../../lib/types/screen";
+import { ProductsPage } from "../../../lib/types/screen"; 
 
-const initialState: ProductsPage = {
+const initialState: ProductsPage = { 
     restaurant: null,
-    chosenProduct: null,
+    chosenProduct: null, 
     products: []
 }
 
 const productsPageSlice = createSlice({
     name: "productsPage",
     initialState,
-    reducers: {
-        setRestaurant: (state, action) => {
+    reducers: { 
+        setRestaurant: (state, action) => { 
             state.restaurant = action.payload;
         },
         setChosenProduct: (state, action) => {
             state.chosenProduct = action.payload;
         },
         setProducts: (state, action) => {
-            state.products = action.payload;
+            state.products = action.payload; 
         },
     }
 });
 
-export const {setRestaurant, setChosenProduct, setProducts} = productsPageSlice.actions;
+export const {setRestaurant, setChosenProduct, setProducts} = productsPageSlice.actions; 
 
 const ProductsPageReducer = productsPageSlice.reducer;
-export default ProductsPageReducer;
+export default ProductsPageReducer; 
