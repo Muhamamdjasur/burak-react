@@ -11,7 +11,7 @@ class ProductService {
     try {
       let url = `${this.path}/product/all?order=${input.order}&page=${input.page}&limit=${input.limit}`; // backendga request
       if (input.productCollection)
-        url += `&productColllection=${input.productCollection}`;
+        url += `&productCollection=${input.productCollection}`;
       if (input.search) url += `&search=${input.search}`;
       // agar param ichida mavjud bolsa  uning ham qiymati kiritilsin
 

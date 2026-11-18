@@ -564,25 +564,25 @@ export default function Products(props: ProductsProps){
                                 const imagePath = `${serverApi}/${product.productImages[0]}`
                                 const sizeVolume = product.productCollection === ProductCollection.DRINK 
                                 ? product.productVolume + " litre" 
-                                : product.productSize + " size";
-                                return (
-                                    <Stack 
+                                : product.productSize + " size";  
+                                return ( 
+                                    <Stack   
                                         key={product._id} 
-                                        className={"product-card"} 
+                                        className={"product-card"}  
                                         onClick={() => chooseDishHandler(product._id)}
                                     >
-                                        <Stack 
-                                        className={"product-img"} 
+                                        <Stack  
+                                        className={"product-img"}  
                                         sx={{ backgroundImage: `url(${imagePath})`}}>
                                             <div className={"product-sale"}>{sizeVolume}</div>
                                             <Button 
-                                            className={"shop-btn"}
-                                            onClick={(e) => {
+                                            className={"shop-btn"} 
+                                            onClick={(e) => { 
                                                 onAdd({
-                                                    _id: product._id,
-                                                    quantity: 1,
-                                                    name: product.productName,
-                                                    price: product.productPrice,
+                                                    _id: product._id, 
+                                                    quantity: 1, 
+                                                    name: product.productName, 
+                                                    price: product.productPrice, 
                                                     image: product.productImages[0]
                                                 })
                                                 e.stopPropagation();

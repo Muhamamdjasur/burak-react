@@ -122,7 +122,7 @@ export default function OrdersPage() {
                 </div>
               </Box>
 
-              <span className="order-user-name">Albert</span>
+              <span className="order-user-name">Jacob</span>
               <span className="order-user-prof">User</span>
 
               <Box className="liner"></Box>
