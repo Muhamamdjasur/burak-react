@@ -6,10 +6,10 @@ import { GlobalContext } from "../hooks/useGlobal";
  
 const ContextProvider: React.FC<{children: ReactNode}> = ({children}) => {  
     const cookies = new Cookies();   
- if (!cookies.get("acessToken")) localStorage.removeItem("memberData");   
+    if (!cookies.get("accessToken")) localStorage.removeItem("memberData");   
   
     const [authMember, setAuthMember] = useState<Member | null>(   
-        localStorage.getItem("MemberData")   
+        localStorage.getItem("memberData")   
         ? JSON.parse(localStorage.getItem("memberData") as string)   
         : null  
     );   

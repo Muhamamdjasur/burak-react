@@ -110,8 +110,8 @@ function App() {
         handleSignupClose={handleSignupClose}
         handleLoginClose={handleLoginClose} 
       /> 
-    </>
-  ); 
+    </> 
+  );  
 }
  
 export default App; 
