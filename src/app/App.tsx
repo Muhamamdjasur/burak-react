@@ -69,49 +69,49 @@ function App() {
         /> 
       ) : ( 
         <OtherNavbar 
-          cartItems={cartItems} 
-          onAdd={onAdd} 
-          onRemove={onRemove} 
-          onDelete={onDelete} 
-          onDeleteAll={onDeleteAll} 
-          setSignupOpen={setSignupOpen} 
-          setLoginOpen={setLoginOpen} 
-          anchorEl={anchorEl} 
-          handleLogoutClick={handleLogoutClick} 
-          handleCloseLogout={handleCloseLogout} 
-          handleLogoutRequest={handleLogoutRequest}  
-        /> 
-      )}  
+          cartItems={cartItems}  
+          onAdd={onAdd}  
+          onRemove={onRemove}  
+          onDelete={onDelete}  
+          onDeleteAll={onDeleteAll}  
+          setSignupOpen={setSignupOpen}  
+          setLoginOpen={setLoginOpen}  
+          anchorEl={anchorEl}  
+          handleLogoutClick={handleLogoutClick}  
+          handleCloseLogout={handleCloseLogout}  
+          handleLogoutRequest={handleLogoutRequest}   
+        />  
+      )}   
  
-      <Switch> 
-        <Route path="/products"> 
-          <ProductsPage onAdd={onAdd} /> 
-        </Route>  
-        <Route path="/orders">  
+      <Switch>  
+        <Route path="/products">  
+          <ProductsPage onAdd={onAdd} />  
+        </Route>   
+        <Route path="/orders">   
           <OrdersPage /> 
-        </Route> 
+        </Route>  
         <Route path="/member-page"> 
-          <UserPage /> 
+          <UserPage />  
         </Route> 
-        <Route path="/help"> 
+        <Route path="/help">  
           <HelpPage /> 
-        </Route> 
+        </Route>  
         <Route path="/"> 
-        {/* <Test /> */} 
+        {/* <Test /> */}. 
           <HomePage /> 
-        </Route> 
+        </Route>. 
       </Switch> 
- 
+  
       <Footer /> 
-
+ 
       <AuthenticationModal 
-        signupOpen={signupOpen} 
+        signupOpen={signupOpen}  
         loginOpen={loginOpen}  
-        handleSignupClose={handleSignupClose} 
+        handleSignupClose={handleSignupClose}
         handleLoginClose={handleLoginClose} 
-      />
+      /> 
     </>
-  );
+  ); 
 }
  
 export default App; 

@@ -53,184 +53,184 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
 
   /** HEADERS **/
 
-  const handleUsername = (e: T) => {
-    console.log(e.target.value);
-    setMemberNick(e.target.value);
-  };
-  const handlePhone = (e: T) => {
-    console.log(e.target.value);
-    setMembePhone(e.target.value);
-  };
-  const handlePassword = (e: T) => {
-    console.log(e.target.value);
-    setMembePassword(e.target.value);
-  };
+  const handleUsername = (e: T) => { 
+    console.log(e.target.value); 
+    setMemberNick(e.target.value); 
+  }; 
+  const handlePhone = (e: T) => {   
+    console.log(e.target.value);  
+    setMembePhone(e.target.value); 
+  }; 
+  const handlePassword = (e: T) => { 
+    console.log(e.target.value); 
+    setMembePassword(e.target.value); 
+  }; 
 
-  const handlePasswordKeyDown = (e: T) => {
-    if (e.key === "Enter" && signupOpen) {
-      handelSignupRequest();
-    } else if (e.key === "Enter" && loginOpen) {
-      handelLoginRequest().then(); // 🔥 SHU YO‘Q EDI
-    }
-  };
-
-  const handelSignupRequest = async () => {
-    try {
-      const isFulfill =
-        memberNick !== "" && memberPhone !== "" && membePassword !== "";
-      if (!isFulfill) throw new Error(Messages.error3);
-
-      const signupInput: MemberInput = {
-        memberNick: memberNick,
-        memberPhone: memberPhone,
-        memberPassword: membePassword,
-      };
-
-      const member = new MemberService();
-      const result = await member.signup(signupInput);
-
-      // Saving Authenticated user
-      setAuthMember(result);
-      handleSignupClose();
-    } catch (err) {
-      console.log(err);
-      handleSignupClose();
-      sweetErrorHandling(err).then();
-    }
-  };
-
-  const handelLoginRequest = async () => {
-    try {
-      const isFulfill = memberNick !== "" && membePassword !== "";
-      if (!isFulfill) throw new Error(Messages.error3);
-
-      const loginInput: LoginInput = {
-        memberNick: memberNick,
-        memberPassword: membePassword,
-      };
-
-      const member = new MemberService();
-      const result = await member.login(loginInput);
-
-      //Saving Authenticated user
-      setAuthMember(result);
-      handleLoginClose(); 
-    } catch (err) {
-      console.log(err);
-      handleLoginClose(); 
+  const handlePasswordKeyDown = (e: T) => { 
+    if (e.key === "Enter" && signupOpen) { 
+      handelSignupRequest(); 
+    } else if (e.key === "Enter" && loginOpen) { 
+      handelLoginRequest().then(); // 🔥 SHU YO‘Q EDI 
+    } 
+  }; 
+ 
+  const handelSignupRequest = async () => { 
+    try { 
+      const isFulfill = 
+        memberNick !== "" && memberPhone !== "" && membePassword !== ""; 
+      if (!isFulfill) throw new Error(Messages.error3); 
+  
+      const signupInput: MemberInput = { 
+        memberNick: memberNick, 
+        memberPhone: memberPhone, 
+        memberPassword: membePassword, 
+      }; 
+ 
+      const member = new MemberService(); 
+      const result = await member.signup(signupInput); 
+ 
+      // Saving Authenticated user 
+      setAuthMember(result); 
+      handleSignupClose(); 
+    } catch (err) { 
+      console.log(err); 
+      handleSignupClose(); 
       sweetErrorHandling(err).then(); 
-    }
-  };
-
-  return (
-    <div>
-      <Modal 
-        aria-labelledby="transition-modal-title" 
-        aria-describedby="transition-modal-description" 
-        className={classes.modal} 
-        open={signupOpen} 
-        onClose={handleSignupClose} 
-        closeAfterTransition 
-        BackdropComponent={Backdrop}  
-        BackdropProps={{ 
-          timeout: 500, 
-        }} 
-      > 
+    } 
+  }; 
+ 
+  const handelLoginRequest = async () => { 
+    try { 
+      const isFulfill = memberNick !== "" && membePassword !== ""; 
+      if (!isFulfill) throw new Error(Messages.error3); 
+ 
+      const loginInput: LoginInput = { 
+        memberNick: memberNick, 
+        memberPassword: membePassword, 
+      }; 
+ 
+      const member = new MemberService(); 
+      const result = await member.login(loginInput); 
+ 
+      //Saving Authenticated user 
+      setAuthMember(result); 
+      handleLoginClose();  
+    } catch (err) { 
+      console.log(err); 
+      handleLoginClose();  
+      sweetErrorHandling(err).then();  
+    } 
+  }; 
+ 
+  return ( 
+    <div> 
+      <Modal  
+        aria-labelledby="transition-modal-title"  
+        aria-describedby="transition-modal-description"  
+        className={classes.modal}  
+        open={signupOpen}  
+        onClose={handleSignupClose}  
+        closeAfterTransition  
+        BackdropComponent={Backdrop}   
+        BackdropProps={{  
+          timeout: 500,  
+        }}  
+      >  
         <Fade in={signupOpen}> 
           <Stack 
             className={classes.paper} 
             direction={"row"} 
             sx={{ width: "800px" }} 
-          >
-            <ModalImg src={"/img/auth.webp"} alt="camera" />
-            <Stack sx={{ marginLeft: "69px", alignItems: "center" }}>
-              <h2>Signup Form</h2>
-              <TextField
-                sx={{ marginTop: "7px" }} 
-                id="outlined-basic" 
-                label="username" 
-                variant="outlined" 
-                onChange={handleUsername} 
-              /> 
-              <TextField 
-                sx={{ my: "17px" }} 
-                id="outlined-basic" 
-                label="phone number"  
-                variant="outlined" 
-                onChange={handlePhone} 
-              /> 
-              <TextField 
-                id="outlined-basic" 
-                label="password" 
-                variant="outlined" 
-                onChange={handlePassword} 
-                onKeyDown={handlePasswordKeyDown} 
-              /> 
-              <Fab 
-                sx={{ marginTop: "30px", width: "120px" }} 
-                variant="extended" 
-                color="primary" 
-                onClick={handelSignupRequest}  
-              > 
-                <LoginIcon sx={{ mr: 1 }} /> 
-                Signup 
-              </Fab> 
-            </Stack> 
-          </Stack> 
-        </Fade> 
-      </Modal> 
- 
-      <Modal 
-        aria-labelledby="transition-modal-title" 
-        aria-describedby="transition-modal-description" 
-        className={classes.modal} 
-        open={loginOpen} 
-        onClose={handleLoginClose} 
-        closeAfterTransition 
-        BackdropComponent={Backdrop} 
-        BackdropProps={{ 
-          timeout: 500, 
-        }} 
-      > 
-        <Fade in={loginOpen}> 
-          <Stack 
-            className={classes.paper} 
-            direction={"row"} 
-            sx={{ width: "700px" }} 
           > 
             <ModalImg src={"/img/auth.webp"} alt="camera" /> 
-            <Stack 
-              sx={{ 
-                marginLeft: "65px", 
-                marginTop: "25px", 
-                alignItems: "center", 
-              }} 
-            > 
-              <h2>Login Form</h2> 
+            <Stack sx={{ marginLeft: "69px", alignItems: "center" }}> 
+              <h2>Signup Form</h2> 
               <TextField 
-                id="outlined-basic" 
-                label="username" 
-                variant="outlined" 
-                sx={{ my: "10px" }} 
-                onChange={handleUsername} 
-              /> 
-              <TextField 
-                id={"outlined-basic"} 
-                label={"password"} 
-                variant={"outlined"} 
-                type={"password"} 
-                onChange={handlePassword} 
-                onKeyDown={handlePasswordKeyDown} 
-              /> 
-              <Fab 
-                sx={{ marginTop: "27px", width: "120px" }} 
-                variant={"extended"} 
-                color={"primary"} 
-                onClick={handelLoginRequest} 
-              > 
-                <LoginIcon sx={{ mr: 1 }} /> 
-                Login 
-              </Fab> 
+                sx={{ marginTop: "7px" }}  
+                id="outlined-basic"  
+                label="username"  
+                variant="outlined"  
+                onChange={handleUsername}  
+              />  
+              <TextField  
+                sx={{ my: "17px" }}  
+                id="outlined-basic"  
+                label="phone number"   
+                variant="outlined"  
+                onChange={handlePhone}  
+              />  
+              <TextField  
+                id="outlined-basic"  
+                label="password"  
+                variant="outlined"  
+                onChange={handlePassword}  
+                onKeyDown={handlePasswordKeyDown}  
+              />  
+              <Fab  
+                sx={{ marginTop: "30px", width: "120px" }}  
+                variant="extended"  
+                color="primary"  
+                onClick={handelSignupRequest}   
+              >  
+                <LoginIcon sx={{ mr: 1 }} />  
+                Signup  
+              </Fab>  
+            </Stack>  
+          </Stack>  
+        </Fade>  
+      </Modal>  
+  
+      <Modal  
+        aria-labelledby="transition-modal-title"  
+        aria-describedby="transition-modal-description"  
+        className={classes.modal}  
+        open={loginOpen}  
+        onClose={handleLoginClose}  
+        closeAfterTransition   
+        BackdropComponent={Backdrop}  
+        BackdropProps={{ 
+          timeout: 500, 
+        }}  
+      >  
+        <Fade in={loginOpen}>  
+          <Stack  
+            className={classes.paper}   
+            direction={"row"}   
+            sx={{ width: "700px" }}   
+          >  
+            <ModalImg src={"/img/auth.webp"} alt="camera" />   
+            <Stack   
+              sx={{    
+                marginLeft: "65px",  
+                marginTop: "25px",    
+                alignItems: "center",   
+              }}   
+            >.  
+              <h2>Login Form</h2>    
+              <TextField   
+                id="outlined-basic"   
+                label="username"   
+                variant="outlined"   
+                sx={{ my: "10px" }}  
+                onChange={handleUsername}  
+              />  
+              <TextField  
+                id={"outlined-basic"}  
+                label={"password"}  
+                variant={"outlined"}  
+                type={"password"}  
+                onChange={handlePassword}  
+                onKeyDown={handlePasswordKeyDown}  
+              />  
+              <Fab  
+                sx={{ marginTop: "27px", width: "120px" }}  
+                variant={"extended"}  
+                color={"primary"}  
+                onClick={handelLoginRequest}  
+              >. 
+                <LoginIcon sx={{ mr: 1 }} />  
+                Login  
+              </Fab>  
             </Stack> 
           </Stack> 
         </Fade> 
@@ -238,8 +238,8 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
     </div> 
   ); 
 } 
-  
-export interface T { 
-  [key: string]: any; 
-} 
+   
+export interface T {  
+  [key: string]: any;  
+}  
   
