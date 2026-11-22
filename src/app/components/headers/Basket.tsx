@@ -30,37 +30,37 @@ export default function Basket(props: BasketProps) {
     0
   );
   const shippingCost: number = itemPrice < 100 ? 5 : 0;
-  const totalprice = (itemPrice + shippingCost).toFixed(1);
+  const totalprice = (itemPrice + shippingCost).toFixed(1); 
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
+  const open = Boolean(anchorEl); 
 
-  /** HANDLERS **/
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(e.currentTarget);
+  /** HANDLERS **/ 
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {  
+    setAnchorEl(e.currentTarget); 
   };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const handleClose = () => {  
+    setAnchorEl(null); 
+  }; 
 
-  const proceedOrderHandler = async () => {
-    try {
-      handleClose();
-      if (!authMember) throw new Error(Messages.error2);
+  const proceedOrderHandler = async () => {  
+    try { 
+      handleClose();  
+      if (!authMember) throw new Error(Messages.error2);  
 
-      const order = new OrderService();
-      await order.createOrder(cartItems);
+      const order = new OrderService(); 
+      await order.createOrder(cartItems);  
 
-      onDeleteAll();
+      onDeleteAll(); 
 
-      // REFRESH VIA CONTEXT
-      setOrderBuilder(new Date());
-      history.push("./orders");
-    } catch (err) {
-      console.log(err);
-      sweetErrorHandling(err).then();
-    }
-  };
+      // REFRESH VIA CONTEXT 
+      setOrderBuilder(new Date()); 
+      history.push("./orders"); 
+    } catch (err) { 
+      console.log(err); 
+      sweetErrorHandling(err).then(); 
+    } 
+  }; 
 
   return (
     <Box className={"hover-line"}>
@@ -111,13 +111,13 @@ export default function Basket(props: BasketProps) {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <Stack className={"basket-frame"}>
-          <Box className={"all-check-box"}>
+        <Stack className={"basket-frame"}> 
+          <Box className={"all-check-box"}> 
             {cartItems.length === 0 ? (
-              <div>Cart is empty!</div>
-            ) : (
-              <Stack flexDirection={"row"}>
-                <div>Cart Products:</div>
+              <div>Cart is empty!</div>  
+            ) : ( 
+              <Stack flexDirection={"row"}> 
+                <div>Cart Products:</div> 
                 <DeleteForeverIcon
                   sx={{ ml: "5px", cursor: "pointer" }}
                   color={"primary"}

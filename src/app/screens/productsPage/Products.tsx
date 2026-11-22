@@ -363,32 +363,32 @@ interface ProductsProps {
   onAdd: (item: CartItem) => void;  
 }
 
-export default function Products(props: ProductsProps){ 
-    const { onAdd } = props; 
-    const {setProducts} = actionDispatch(useDispatch()); 
-    const {products} = useSelector(productsRetriever); 
-    const [productSearch, setProductSearch] = useState<ProductInquiry>({ 
+export default function Products(props: ProductsProps){  
+    const { onAdd } = props;  
+    const {setProducts} = actionDispatch(useDispatch());  
+    const {products} = useSelector(productsRetriever);  
+    const [productSearch, setProductSearch] = useState<ProductInquiry>({  
             page: 1,
-            limit: 8,
+            limit: 8, 
             order: "createdAt", 
-            productCollection: ProductCollection.DISH,  
+            productCollection: ProductCollection.DISH,   
             search: ""
         });
- 
-    const [searchText, setSearchText] = useState<string>("");  
+  
+    const [searchText, setSearchText] = useState<string>("");   
     const history = useHistory(); 
   
     useEffect(() => {
-        const product = new ProductService(); 
-        product
+        const product = new ProductService();  
+        product 
             .getProducts(productSearch)
             .then((data) => setProducts(data))  
             .catch(err => console.log(err)); 
-    }, [productSearch]);
+    }, [productSearch]); 
  
-    useEffect(() => { 
-        if(searchText === "") { 
-            productSearch.search = ""; 
+    useEffect(() => {  
+        if(searchText === "") {  
+            productSearch.search = "";  
             setProductSearch({...productSearch}); 
         }
 
@@ -411,115 +411,115 @@ export default function Products(props: ProductsProps){
 
     const searchProductHandler = () => {
         productSearch.search = searchText; 
+        setProductSearch({...productSearch});  
+    }
+
+    const paginationHandler = (e: ChangeEvent<any>, value: number) => {  
+        productSearch.page = value; 
         setProductSearch({...productSearch}); 
     }
 
-    const paginationHandler = (e: ChangeEvent<any>, value: number) => { 
-        productSearch.page = value;
-        setProductSearch({...productSearch});
-    }
-
-    const chooseDishHandler = (id: string) => { 
-        history.push(`/products/${id}`);     
+    const chooseDishHandler = (id: string) => {  
+        history.push(`/products/${id}`);      
     }
 
     return (
-    <div className={"products"}>
+    <div className={"products"}> 
         <Container>
-            <Stack flexDirection={"column"} alignItems={"center"}>
-                <Stack className={"avatar-big-box"}>
-                    <Box className="category-title">Burak Restaurant</Box>
-                    <Box className="search-box">
+            <Stack flexDirection={"column"} alignItems={"center"}> 
+                <Stack className={"avatar-big-box"}> 
+                    <Box className="category-title">Burak Restaurant</Box> 
+                    <Box className="search-box"> 
                         <TextField
-                            id="outlined-basic"
-                            variant="outlined"
-                            className="text-field"
-                            placeholder="Type here"
-                            value={searchText}
-                            onChange={(e) => setSearchText(e.target.value)}
-                            InputProps={{
-                                endAdornment: (
-                                    <InputAdornment position="end">
+                            id="outlined-basic" 
+                            variant="outlined" 
+                            className="text-field" 
+                            placeholder="Type here" 
+                            value={searchText} 
+                            onChange={(e) => setSearchText(e.target.value)} 
+                            InputProps={{ 
+                                endAdornment: ( 
+                                    <InputAdornment position="end"> 
                                         {searchText && (
-                                            <IconButton
-                                                aria-label="clear text"
-                                                onClick={() => setSearchText('')}
-                                                edge="end"
-                                                size="small"
-                                                disableRipple
+                                            <IconButton 
+                                                aria-label="clear text" 
+                                                onClick={() => setSearchText('')} 
+                                                edge="end" 
+                                                size="small" 
+                                                disableRipple 
                                             >
-                                                <ClearIcon />
-                                            </IconButton>
-                                        )}
-                                    </InputAdornment>
-                                ),
+                                                <ClearIcon /> 
+                                            </IconButton> 
+                                        )} 
+                                    </InputAdornment> 
+                                ), 
                             }}
-                            onKeyDown={(e) => {
-                                if(e.key === "Enter") searchProductHandler();
+                            onKeyDown={(e) => { 
+                                if(e.key === "Enter") searchProductHandler();  
                             }}
                         />
                             <Button 
                                 variant="contained" 
                                 className="search-button"
-                                onClick={searchProductHandler}
+                                onClick={searchProductHandler}  
                             >
                                 Search <SearchIcon className="search-icon" />
-                            </Button>
-                    </Box>
-                </Stack>
-
-                <Stack className={"dishes-filter-section"}>
-                    <Stack className={"dishes-filter-box"}>
-                        <Button
-                            variant={"contained"}
-                            color={productSearch.order === "createdAt" ? "primary" : "secondary"}
-                            className={"order"}
-                            onClick={() => searchOrderHandler("createdAt")}
+                            </Button> 
+                    </Box> 
+                </Stack> 
+ 
+                <Stack className={"dishes-filter-section"}>  
+                    <Stack className={"dishes-filter-box"}>  
+                        <Button  
+                            variant={"contained"}  
+                            color={productSearch.order === "createdAt" ? "primary" : "secondary"} 
+                            className={"order"} 
+                            onClick={() => searchOrderHandler("createdAt")} 
                         >
-                            New
-                        </Button>
+                            New 
+                        </Button> 
                         <Button
-                            variant={"contained"}
+                            variant={"contained"} 
                             color={productSearch.order === "productPrice" ? "primary" : "secondary"}
-                            className={"order"}
+                            className={"order"} 
                             onClick={() => searchOrderHandler("productPrice")}
                         >
-                            Price
-                        </Button>
+                            Price 
+                        </Button> 
                         <Button
-                            variant={"contained"}
+                            variant={"contained"} 
                             color={productSearch.order === "productViews" ? "primary" : "secondary"}
-                            className={"order"}
+                            className={"order"} 
                             onClick={() => searchOrderHandler("productViews")}
                         >
-                            Views
-                        </Button>
-                    </Stack>
-                </Stack>
+                            Views 
+                        </Button> 
+                    </Stack> 
+                </Stack> 
 
-                <Stack className={"list-category-section"}>
+                <Stack className={"list-category-section"}> 
                     <Stack className={"product-category"}>
                         <div className={"category-main"}>
                             <Button 
-                                variant={"contained"}   
-                                color={  
+                                variant={"contained"}    
+                                color={   
                                     productSearch.productCollection === ProductCollection.OTHER  
-                                    ? "primary"  
-                                    : "secondary"  
+                                    ? "primary"   
+                                    : "secondary"   
                                 } 
                                 onClick={() => searchCollectionHandler(ProductCollection.OTHER)} 
                             >
-                                Other  
+                                Other   
                             </Button>   
-                            <Button    
-                                variant={"contained"}   
-                                color={
+                            <Button     
+                                variant={"contained"}    
+                                color={ 
                                     productSearch.productCollection === ProductCollection.DESERT  
-                                    ? "primary"  
-                                    : "secondary"
+                                    ? "primary"   
+                                    : "secondary" 
                                 }
                                 onClick={() => searchCollectionHandler(ProductCollection.DESERT)} 
-                            >
+                            > 
                                 Dessert 
                             </Button> 
                             <Button   

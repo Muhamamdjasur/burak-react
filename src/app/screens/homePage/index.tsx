@@ -28,12 +28,12 @@ export default function HomePage() {
   const { setPopularDishes, setNewDishes, setTopUsers } =
     actionDispatch(useDispatch());
 
-  useEffect(() => { //life sycle hosil qilish un  yani 3 hil  
+  useEffect(() => { // life cycle hosil qilish un  yani 3 hil  
     const product = new ProductService();  // ins obj
 
     // POPULAR DISHES
     product // obj 
-      .getProducts({ //key va val meth  1
+      .getProducts({ // key va val meth  1
         page: 1 ,
         limit: 4,
         order: "productViews",
@@ -66,7 +66,7 @@ export default function HomePage() {
         setTopUsers(data);
       })
       .catch((err) => console.log(err));
-  }, []); //[] array dependency mantiq bu DidUpdate
+  }, []); // [] array dependency mantiq bu DidUpdate
 
   return (
     <div className={"homepage"}>
@@ -77,7 +77,7 @@ export default function HomePage() {
       <ActiveUsers />
       <Events />
     </div> 
-  );
+  )
 }
 
 

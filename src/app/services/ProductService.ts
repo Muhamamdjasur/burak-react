@@ -15,7 +15,7 @@ class ProductService {
       if (input.search) url += `&search=${input.search}`;
       // agar param ichida mavjud bolsa  uning ham qiymati kiritilsin
 
-      const result = await axios.get(url); //obj meth call arg paste
+      const result = await axios.get(url); // obj meth call arg paste
       console.log("getProducts:", result); // kirib kelayotgan resultni bizga shunga biriktirilgan holda  print qilnsn
 
       return result.data; 
