@@ -12,42 +12,42 @@ const useBasket = () => {
       (item: CartItem) => item._id === input._id
     );
     if (exist) {
-      const cartUpdate: any = cartItems.map((item: CartItem) =>
-        item._id === input._id
-          ? { ...exist, quantity: exist.quantity + 1 }
-          : item
-      );
-      setCartItems(cartUpdate);
-      localStorage.setItem("cartData", JSON.stringify(cartUpdate));
-    } else {
-      const cartUpdate = [...cartItems, { ...input }];
-      setCartItems(cartUpdate);
-      localStorage.setItem("cartData", JSON.stringify(cartUpdate));
+      const cartUpdate: any = cartItems.map((item: CartItem) =>  
+        item._id === input._id 
+          ? { ...exist, quantity: exist.quantity + 1 }  
+          : item 
+      ); 
+      setCartItems(cartUpdate); 
+      localStorage.setItem("cartData", JSON.stringify(cartUpdate)); 
+    } else { 
+      const cartUpdate = [...cartItems, { ...input }]; 
+      setCartItems(cartUpdate); 
+      localStorage.setItem("cartData", JSON.stringify(cartUpdate));  
     }
-  };
-
-  const onRemove = (input: CartItem) => {
-    const exist: any = cartItems.find(
-      (item: CartItem) => item._id === input._id
+  }; 
+ 
+  const onRemove = (input: CartItem) => {  
+    const exist: any = cartItems.find( 
+      (item: CartItem) => item._id === input._id 
     );
-    if (exist.quantity === 1) {
-      const cartUpdate = cartItems.filter(
-        (item: CartItem) => item._id !== input._id
+    if (exist.quantity === 1) {  
+      const cartUpdate = cartItems.filter(  
+        (item: CartItem) => item._id !== input._id  
       );
-      setCartItems(cartUpdate);
-      localStorage.setItem("cartData", JSON.stringify(cartUpdate));
-    } else {
-      const cartUpdate = cartItems.map((item: CartItem) =>
-        item._id === input._id
-          ? { ...exist, quantity: exist.quantity - 1 }
-          : item
-      );
-      setCartItems(cartUpdate);
-      localStorage.setItem("cartData", JSON.stringify(cartUpdate));
+      setCartItems(cartUpdate);  
+      localStorage.setItem("cartData", JSON.stringify(cartUpdate));  
+    } else { 
+      const cartUpdate = cartItems.map((item: CartItem) => 
+        item._id === input._id 
+          ? { ...exist, quantity: exist.quantity - 1 } 
+          : item 
+      ); 
+      setCartItems(cartUpdate); 
+      localStorage.setItem("cartData", JSON.stringify(cartUpdate)); 
     }
   };
 
-  const onDelete = (input: CartItem) => {
+  const onDelete = (input: CartItem) => { 
     const cartUpdate = cartItems.filter(
       (item: CartItem) => item._id !== input._id
     );
@@ -60,12 +60,13 @@ const useBasket = () => {
     localStorage.removeItem("cartData");
   };
 
-  return {
-    cartItems,
-    onAdd,
-    onRemove,
-    onDelete,
-    onDeleteAll,
-  };
+  return { 
+    cartItems, 
+    onAdd, 
+    onRemove, 
+    onDelete, 
+    onDeleteAll, 
+  }; 
 };
-export default useBasket;
+export default useBasket; 
+ 

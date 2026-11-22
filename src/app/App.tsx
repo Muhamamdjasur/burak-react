@@ -23,7 +23,7 @@ import Test from "./screens/Test";
  
 function App() { 
   const location = useLocation(); 
-  const { setAuthMember } = useGlobals();  
+  const { setAuthMember } = useGlobals();   
 
   const { cartItems, onAdd, onRemove, onDelete, onDeleteAll } = useBasket(); 
   const [signupOpen, setSignupOpen] = useState<boolean>(false);  
@@ -43,24 +43,24 @@ function App() {
       const member = new MemberService();  
       await member.logout(); 
 
-      await sweetTopSuccessAlert("success", 700);     
-      setAuthMember(null);     
-    } catch (err) {  
-      console.log(err);   
-      sweetErrorHandling(Messages.error1);  
+      await sweetTopSuccessAlert("success", 700);      
+      setAuthMember(null);      
+    } catch (err) {   
+      console.log(err);    
+      sweetErrorHandling(Messages.error1);   
     }  
-  }; 
+  };  
   
-  return (  
+  return (   
     <>
-      {location.pathname === "/" ? ( 
+      {location.pathname === "/" ? (  
         <HomeNavbar 
-          cartItems={cartItems }  
-          onAdd={onAdd} 
-          onRemove={onRemove} 
-          onDelete={onDelete}  
-          onDeleteAll={onDeleteAll} 
-          setSignupOpen={setSignupOpen}  
+          cartItems={cartItems }   
+          onAdd={onAdd}  
+          onRemove={onRemove}  
+          onDelete={onDelete}   
+          onDeleteAll={onDeleteAll}  
+          setSignupOpen={setSignupOpen}   
           setLoginOpen={setLoginOpen} 
           anchorEl={anchorEl} 
           handleLogoutClick={handleLogoutClick}
