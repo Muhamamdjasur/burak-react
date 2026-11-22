@@ -47,8 +47,8 @@ function App() {
       setAuthMember(null);      
     } catch (err) {   
       console.log(err);    
-      sweetErrorHandling(Messages.error1);   
-    }  
+      sweetErrorHandling(Messages.error1);        
+    }    
   };  
   
   return (   
@@ -61,57 +61,58 @@ function App() {
           onDelete={onDelete}   
           onDeleteAll={onDeleteAll}  
           setSignupOpen={setSignupOpen}   
+          setLoginOpen={setLoginOpen}     
+          anchorEl={anchorEl}  
+          handleLogoutClick={handleLogoutClick} 
+          handleCloseLogout={handleCloseLogout} 
+          handleLogoutRequest={handleLogoutRequest} 
+        /> 
+      ) : ( 
+        <OtherNavbar 
+          cartItems={cartItems} 
+          onAdd={onAdd} 
+          onRemove={onRemove} 
+          onDelete={onDelete} 
+          onDeleteAll={onDeleteAll} 
+          setSignupOpen={setSignupOpen} 
           setLoginOpen={setLoginOpen} 
           anchorEl={anchorEl} 
-          handleLogoutClick={handleLogoutClick}
-          handleCloseLogout={handleCloseLogout}
-          handleLogoutRequest={handleLogoutRequest}
-        />
-      ) : (
-        <OtherNavbar
-          cartItems={cartItems}
-          onAdd={onAdd}
-          onRemove={onRemove}
-          onDelete={onDelete}
-          onDeleteAll={onDeleteAll}
-          setSignupOpen={setSignupOpen}
-          setLoginOpen={setLoginOpen}
-          anchorEl={anchorEl}
-          handleLogoutClick={handleLogoutClick}
-          handleCloseLogout={handleCloseLogout}
-          handleLogoutRequest={handleLogoutRequest} 
-        />
-      )}
+          handleLogoutClick={handleLogoutClick} 
+          handleCloseLogout={handleCloseLogout} 
+          handleLogoutRequest={handleLogoutRequest}  
+        /> 
+      )}  
+ 
+      <Switch> 
+        <Route path="/products"> 
+          <ProductsPage onAdd={onAdd} /> 
+        </Route>  
+        <Route path="/orders">  
+          <OrdersPage /> 
+        </Route> 
+        <Route path="/member-page"> 
+          <UserPage /> 
+        </Route> 
+        <Route path="/help"> 
+          <HelpPage /> 
+        </Route> 
+        <Route path="/"> 
+        {/* <Test /> */} 
+          <HomePage /> 
+        </Route> 
+      </Switch> 
+ 
+      <Footer /> 
 
-      <Switch>
-        <Route path="/products">
-          <ProductsPage onAdd={onAdd} />
-        </Route>
-        <Route path="/orders"> 
-          <OrdersPage />
-        </Route>
-        <Route path="/member-page">
-          <UserPage />
-        </Route>
-        <Route path="/help">
-          <HelpPage />
-        </Route>
-        <Route path="/">
-        {/* <Test /> */}
-          <HomePage />
-        </Route>
-      </Switch>
-
-      <Footer />
-
-      <AuthenticationModal
-        signupOpen={signupOpen}
-        loginOpen={loginOpen}
-        handleSignupClose={handleSignupClose}
-        handleLoginClose={handleLoginClose}
+      <AuthenticationModal 
+        signupOpen={signupOpen} 
+        loginOpen={loginOpen}  
+        handleSignupClose={handleSignupClose} 
+        handleLoginClose={handleLoginClose} 
       />
     </>
   );
 }
-
-export default App;
+ 
+export default App; 
+  
