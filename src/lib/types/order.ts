@@ -11,14 +11,14 @@ export interface OrderItemInput {
 export interface OrderItem {
   productData: any;
   _id: string;
-  itemQuantity: number;
+  itemQuantity: number; 
   itemPrice: number;
-  orderId: string;
-  productId: string;
+  orderId: string; 
+  productId: string; 
   createdAt: Date;
-  updatedAt: Date;
+  updatedAt: Date; 
 }
-export interface OrderInquiry {
+export interface OrderInquiry { 
   page: number;
   limit: number;
   orderStatus: OrderStatus;

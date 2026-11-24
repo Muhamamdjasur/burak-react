@@ -7,25 +7,25 @@ export interface AppRootState {
   ordersPage: any;
   homePage: HomePageState;
   productsPage: ProductsPage; 
-}
+} 
 
 // HOMEPAGE
-export interface HomePageState { 
+export interface HomePageState {  
   popularDishes: Product[]; 
-  newDishes: Product[]; 
-  topUsers: Member[];
-}
+  newDishes: Product[];  
+  topUsers: Member[]; 
+} 
  
 // PRODUCTS PAGE
-export interface ProductsPage {
-  restaurant: Member | null; 
-  chosenProduct: Product |  null;
-  products: Product[]; 
-}
-
-// ORDERS PAGE
-export interface OrdersPageState {  
-  pausedOrders: Order[];
-  processOrders: Order[];
-  finishedOrders: Order[];
+export interface ProductsPage { 
+  restaurant: Member | null;  
+  chosenProduct: Product |  null; 
+  products: Product[];  
 } 
+
+// ORDERS PAGE 
+export interface OrdersPageState {   
+  pausedOrders: Order[]; 
+  processOrders: Order[]; 
+  finishedOrders: Order[];
+}  

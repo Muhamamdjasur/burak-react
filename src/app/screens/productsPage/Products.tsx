@@ -514,11 +514,11 @@ export default function Products(props: ProductsProps){
                             <Button     
                                 variant={"contained"}    
                                 color={ 
-                                    productSearch.productCollection === ProductCollection.DESERT  
+                                    productSearch.productCollection === ProductCollection.DESSERT  
                                     ? "primary"   
                                     : "secondary" 
                                 }
-                                onClick={() => searchCollectionHandler(ProductCollection.DESERT)} 
+                                onClick={() => searchCollectionHandler(ProductCollection.DESSERT)} 
                             > 
                                 Dessert 
                             </Button> 
