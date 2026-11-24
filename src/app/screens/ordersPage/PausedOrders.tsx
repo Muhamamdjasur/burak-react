@@ -158,27 +158,27 @@ const orderId  = e.target.value
                   className="pay-button"
                   onClick={processOrderHandler}
                 >
-                  Payment
-                </Button>
-              </Box>
-            </Box>
-          );
-        })}
-
-        {(!pausedOrders || (pausedOrders.length === 0) && (
-          <Box
-            display="flex"
-            justifyContent="center"
-          >
-            <img
-              src="/icons/noimage-list.svg"
-              style={{ width: 300, height: 300 }}
-            />
-          </Box>
-        ))}
-      </Stack>
-    </TabPanel>
-  );
+                  Payment 
+                </Button> 
+              </Box> 
+            </Box> 
+          ); 
+        })} 
+ 
+        {(!pausedOrders || (pausedOrders.length === 0) && ( 
+          <Box  
+            display="flex" 
+            justifyContent="center" 
+          > 
+            <img 
+              src="/icons/noimage-list.svg"  
+              style={{ width: 300, height: 300 }} 
+            /> 
+          </Box> 
+        ))} 
+      </Stack> 
+    </TabPanel> 
+  ); 
 }
-
+ 
 
