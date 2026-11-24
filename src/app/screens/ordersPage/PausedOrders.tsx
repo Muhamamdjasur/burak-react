@@ -20,31 +20,32 @@ const pausedOrdersRetriever = createSelector(
   (pausedOrders) => ({ pausedOrders })
 );
 
-interface PausedOrdersProps {
-  setValue: (input: string) => void;
+interface PausedOrdersProps { 
+  setValue: (input: string) => void; 
 }
 
-export default function PausedOrders(props: PausedOrdersProps) {
+export default function PausedOrders(props: PausedOrdersProps) { 
   const { setValue } = props;
-  const { authMember, setOrderBuilder } = useGlobals();
-  const { pausedOrders } = useSelector(pausedOrdersRetriever);
+  const { authMember, setOrderBuilder } = useGlobals(); 
+  const { pausedOrders } = useSelector(pausedOrdersRetriever); 
 
   /** HANADLERS **/
 
-  const deleteOrderHandler = async (e: T) => {
+  const deleteOrderHandler = async (e: T) => { 
    try {
-   const orderId  = e.target.value
- if (!authMember) throw new Error(Messages.error2);
- const input: OrderUpdateInput = {
-  orderId: orderId,
-  orderStatus: OrderStatus.DELETE,
- }
+   const orderId  = e.target.value 
+ if (!authMember) throw new Error(Messages.error2); 
+ const input: OrderUpdateInput = { 
+  orderId: orderId, 
+  orderStatus: OrderStatus.DELETE, 
+ } 
 
  const confirmation  = window.confirm("Do you want delete the order?");
- if (confirmation) {
+ if (confirmation) { 
   const order = new OrderService();
   await order.updateOrder(input);
-  //ORDER REBUILD 
+
+  // ORDER REBUILD 
   setValue("2")
   setOrderBuilder(new Date());
 }
@@ -58,21 +59,24 @@ export default function PausedOrders(props: PausedOrdersProps) {
    try {
    
  if (!authMember) throw new Error(Messages.error2);
+
  //PAYMENT PROCESS
 
 const orderId  = e.target.value
  const input: OrderUpdateInput = {
   orderId: orderId,
-  orderStatus: OrderStatus.PROCESS   ,
+  orderStatus: OrderStatus.PROCESS,
  }
 
  const confirmation  = window.confirm("Do you want to procced the payment ?");
  if (confirmation) {
   const order = new OrderService();
   await order.updateOrder(input);
-  ///PAUSED => PROCCES OPRDERS
+
+  // PAUSED => PROCCES OPRDERS
   setValue("2");
-  //ORDER REBUILD  
+
+  // ORDER REBUILD  
   setOrderBuilder(new Date());
 }
    } catch (err) {

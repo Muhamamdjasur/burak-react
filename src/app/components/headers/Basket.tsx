@@ -43,33 +43,33 @@ export default function Basket(props: BasketProps) {
     setAnchorEl(null); 
   }; 
 
-  const proceedOrderHandler = async () => {  
-    try { 
-      handleClose();  
-      if (!authMember) throw new Error(Messages.error2);  
+  const proceedOrderHandler = async () => {   
+    try {  
+      handleClose();   
+      if (!authMember) throw new Error(Messages.error2);   
+ 
+      const order = new OrderService();  
+      await order.createOrder(cartItems);   
 
-      const order = new OrderService(); 
-      await order.createOrder(cartItems);  
-
-      onDeleteAll(); 
-
-      // REFRESH VIA CONTEXT 
-      setOrderBuilder(new Date()); 
-      history.push("./orders"); 
-    } catch (err) { 
-      console.log(err); 
-      sweetErrorHandling(err).then(); 
-    } 
-  }; 
-
-  return (
-    <Box className={"hover-line"}>
-      <IconButton
-        aria-label="cart"
-        id="basic-button"
-        aria-controls={open ? "basic-menu" : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? "true" : undefined}
+      onDeleteAll();  
+ 
+      // REFRESH VIA CONTEXT  
+      setOrderBuilder(new Date());  
+      history.push("./orders");  
+    } catch (err) {  
+      console.log(err);  
+      sweetErrorHandling(err).then();  
+    }  
+  };  
+ 
+  return ( 
+    <Box className={"hover-line"}> 
+      <IconButton 
+        aria-label="cart" 
+        id="basic-button" 
+        aria-controls={open ? "basic-menu" : undefined} 
+        aria-haspopup="true" 
+        aria-expanded={open ? "true" : undefined} 
         onClick={handleClick}
       >
         <Badge badgeContent={cartItems.length} color="secondary">
