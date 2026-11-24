@@ -44,25 +44,25 @@ class OrderService {
       const result = await axios.get(url + query, { withCredentials: true }); //^^ 2 chi variant
       console.log("getMyOrders:", result); 
 
-      return result.data;   
-    } catch (err) {    
-      console.log("Error. getMyOrders:", err);   
-      throw err;    
-    }    
-  }    
-
-  public async updateOrder(input: OrderUpdateInput): Promise<Order> {
-    try { 
-      const url = `${this.path}/order/update`; 
-      const result = await axios.post(url, input, { withCredentials: true });
-      console.log("updateOrder:", result); 
-
       return result.data;    
-    } catch (err) {    
-      console.log("Error. updateOrder:", err);    
+    } catch (err) {     
+      console.log("Error. getMyOrders:", err);    
       throw err;     
     }     
   }    
-}   
 
-export default OrderService;    
+  public async updateOrder(input: OrderUpdateInput): Promise<Order> {
+    try {  
+      const url = `${this.path}/order/update`;  
+      const result = await axios.post(url, input, { withCredentials: true });
+      console.log("updateOrder:", result);  
+
+      return result.data;     
+    } catch (err) {     
+      console.log("Error. updateOrder:", err);     
+      throw err;      
+    }       
+  }     
+}    
+
+export default OrderService;     

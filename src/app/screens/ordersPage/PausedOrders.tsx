@@ -152,33 +152,33 @@ const orderId  = e.target.value
                   Cancel
                 </Button>
 
-                <Button
-                 value={order._id}
-                  variant="contained"
-                  className="pay-button"
-                  onClick={processOrderHandler}
-                >
-                  Payment 
-                </Button> 
-              </Box> 
-            </Box> 
-          ); 
-        })} 
+                <Button 
+                 value={order._id}  
+                  variant="contained"  
+                  className="pay-button"   
+                  onClick={processOrderHandler}   
+                >  
+                  Payment   
+                </Button>   
+              </Box>   
+            </Box>  
+          );  
+        })}  
  
-        {(!pausedOrders || (pausedOrders.length === 0) && ( 
-          <Box  
-            display="flex" 
-            justifyContent="center" 
-          > 
-            <img 
-              src="/icons/noimage-list.svg"  
-              style={{ width: 300, height: 300 }} 
-            /> 
-          </Box> 
-        ))} 
-      </Stack> 
-    </TabPanel> 
-  ); 
-}
+        {(!pausedOrders || (pausedOrders.length === 0) && (    
+          <Box   
+            display="flex"   
+            justifyContent="center"    
+          >   
+            <img    
+              src="/icons/noimage-list.svg"    
+              style={{ width: 300, height: 300 }}   
+            />    
+          </Box>   
+        ))}    
+      </Stack>    
+    </TabPanel>   
+  );   
+} 
  
 
