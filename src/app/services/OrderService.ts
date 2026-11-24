@@ -39,7 +39,7 @@ class OrderService {
     try {
       // axios.defaults.withCredentials = true; 1 usul yokida
       const url = `${this.path}/order/all`; 
-      const query = `?page=${input.page}&limit${input.limit}&orderStatus=${input.orderStatus}`;
+      const query = `?page=${input.page}&limit=${input.limit}&orderStatus=${input.orderStatus}`;
 
       const result = await axios.get(url + query, { withCredentials: true }); //^^ 2 chi variant
       console.log("getMyOrders:", result); 
