@@ -66,100 +66,101 @@ export function Settings() {
       setAuthMember(result);
       await sweetTopSmallSuccessAlert("Modify successfully!", 700);
     } catch (err) {
-      console.log("handleSubmitButton", err);
+      console.log("handleSubmitButton", err); 
       sweetErrorHandling(err).then();
-    }
+    } 
   };
-
-  const handleImageViewer = (e: T) => {
-    const file = e.target.files[0];
+ 
+  const handleImageViewer = (e: T) => { 
+    const file = e.target.files[0]; 
     console.log("file:", file);
-    const fileType = file.type,
+    const fileType = file.type, 
       validateImageTypes = ["image/jpg", "image/jpeg", "image/png"];
-    if (!validateImageTypes.includes(fileType)) {
+    if (!validateImageTypes.includes(fileType)) { 
       sweetErrorHandling(Messages.error5).then();
-    } else {
+    } else { 
       if (file) {
-        memberUpdateInput.memberImage = file;
+        memberUpdateInput.memberImage = file; 
         setMemberUpdateInput({ ...memberUpdateInput });
-        setMemberImage(URL.createObjectURL(file));
+        setMemberImage(URL.createObjectURL(file)); 
       }
-    }
+    } 
   };
-
+ 
   return (
-    <Box className={"settings"}>
+    <Box className={"settings"}> 
       <Box className={"member-media-frame"}>
-        <img src={memberImage} className={"mb-image"} />
+        <img src={memberImage} className={"mb-image"} /> 
         <div className={"media-change-box"}>
-          <span>Upload image</span>
+          <span>Upload image</span> 
           <p>JPG, JPEG, PNG formats only!</p>
-          <div className={"up-del-box"}>
+          <div className={"up-del-box"}> 
             <Button component="label" onChange={handleImageViewer}>
-              <CloudDownloadIcon />
+              <CloudDownloadIcon /> 
               <input type="file" hidden />
-            </Button>
+            </Button> 
           </div>
-        </div>
+        </div> 
       </Box>
-      <Box className={"input-frame"}>
+      <Box className={"input-frame"}> 
         <div className={"long-input"}>
-          <label className={"spec-label"}>Username</label>
+          <label className={"spec-label"}>Username</label> 
           <input
-            className={"spec-input mb-nick"}
+            className={"spec-input mb-nick"} 
             type="text"
-            placeholder={authMember?.memberNick}
+            placeholder={authMember?.memberNick} 
             value={memberUpdateInput.memberNick}
-            name="memberNick"
+            name="memberNick" 
             onClick={memberNickHandler}
-          />
+          /> 
         </div>
-      </Box>
+      </Box> 
       <Box className={"input-frame"}>
-        <div className={"short-input"}>
+        <div className={"short-input"}> 
           <label className={"spec-label"}>Phone</label>
-          <input
+          <input 
             className={"spec-input mb-phone"}
-            type="text"
+            type="text" 
             placeholder={authMember?.memberPhone ?? "no phone"}
-            value={memberUpdateInput.memberPhone}
+            value={memberUpdateInput.memberPhone} 
             name="memberPhone"
-            onClick={memberPhoneHandler}
+            onClick={memberPhoneHandler} 
           />
-        </div>
+        </div> 
         <div className={"short-input"}>
-          <label className={"spec-label"}>Address</label>
+          <label className={"spec-label"}>Address</label> 
           <input
-            className={"spec-input  mb-address"}
+            className={"spec-input  mb-address"} 
             type="text"
-            placeholder={
+            placeholder={ 
               authMember?.memberAddress ? authMember.memberAddress : "no adress"
-            }
+            } 
             value={memberUpdateInput.memberAddress}
-            name="memberAddress"
+            name="memberAddress" 
             onClick={memberAddressHandler}
-          />
+          /> 
         </div>
-      </Box>
-      <Box className={"input-frame"}>
+      </Box> 
+      <Box className={"input-frame"}>  
         <div className={"long-input"}>
-          <label className={"spec-label"}>Description</label>
+          <label className={"spec-label"}>Description</label> 
           <textarea
-            className={"spec-textarea mb-description"}
+            className={"spec-textarea mb-description"} 
             placeholder={
               authMember?.memberDesc ? authMember.memberDesc : "no description"
-            }
-            value={memberUpdateInput.memberDesc}
-            name="memberDesc"
-            onClick={memberDescriptionHandler}
-          />
+            } 
+            value={memberUpdateInput.memberDesc} 
+            name="memberDesc" 
+            onClick={memberDescriptionHandler}   
+          />  
         </div>
-      </Box>
-      <Box className={"save-box"}>
-        <Button variant={"contained"} onClick={handleSubmitButton}>
-          Save
-        </Button>
-      </Box>
-    </Box>
-  );
+      </Box> 
+      <Box className={"save-box"}> 
+        <Button variant={"contained"} onClick={handleSubmitButton}> 
+          Save 
+        </Button> 
+      </Box> 
+    </Box> 
+  ); 
 }
+ 
